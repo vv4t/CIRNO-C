@@ -1,0 +1,30 @@
+#include "stdio.9c"
+
+struct vec3_t {
+  i32 x;
+  i32 y;
+  i32 z;
+};
+
+fn dot(vec3_t *a, vec3_t *b) : i32
+{
+  return a->x * b->x + a->y * b->y + a->z * b->z;
+}
+
+fn main()
+{
+  vec3_t a;
+  vec3_t b;
+  
+  a.x = 1;
+  a.y = 2;
+  a.z = 3;
+  
+  b.x = 1;
+  b.y = 2;
+  b.z = 3;
+  
+  print(dot(&a, &b));
+}
+
+main();

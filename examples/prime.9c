@@ -1,0 +1,39 @@
+#include "stdio.9c"
+
+fn main()
+{
+  i32 i;
+	i32 p;
+	i32 n;
+	i32 prime[32];
+	
+	n = 32;
+	
+	i = 0;
+	while (i < n) {
+		prime[i] = 1;
+		i = i + 1;
+	}
+	
+	p = 2;
+	while (p * p < n) {
+		if (prime[p] > 0) {
+			i = p * p;
+			while (i < n) {
+				prime[i] = 0;
+				i = i + p;
+			}
+		}
+		
+		p = p + 1;
+	}
+  
+  i = 0;
+  while (i < n) {
+    if (prime[i] > 0)
+      print(i);
+    i = i + 1;
+  }
+}
+
+main();

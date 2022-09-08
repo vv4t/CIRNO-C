@@ -1,0 +1,33 @@
+
+fn puts(i8 *n)
+{
+  asm("
+    lbp
+    ldr
+    int 2
+  ");
+}
+
+fn write(i8 *n)
+{
+  puts(n);
+  puts("\n");
+}
+
+fn print(i32 n)
+{
+  i8 str[6];
+  i32 c = 0;
+  
+  str[0] = (i8) ('0' + (n % 10000) / 1000);
+  str[1] = (i8) ('0' + (n % 1000) / 100);
+  str[2] = (i8) ('0' + (n % 100) / 10);
+  str[3] = (i8) ('0' + n % 10);
+  str[4] = (i8)'\n';
+  str[5] = (i8) 0;
+  
+  while (str[c] == '0' && c < 3)
+    c += 1;
+  
+  puts(&str[c]);
+}

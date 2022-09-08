@@ -1,0 +1,47 @@
+#include "stdio.9c"
+
+fn main()
+{
+  i32 data[8];
+  i32 sorted_end;
+  i32 i;
+  i32 tmp;
+  i32 min_pos;
+  
+  sorted_end = 0;
+  
+  data[0] = 0;
+  data[1] = 9;
+  data[2] = 4;
+  data[3] = 3;
+  data[4] = 6;
+  data[5] = 3;
+  data[6] = 2;
+  data[7] = 1;
+  
+  while (sorted_end < 7) {
+    min_pos = sorted_end;
+    
+    i = sorted_end;
+    while (i < 7) {
+      if (data[i] < data[min_pos])
+        min_pos = i;
+      
+      i = i + 1;
+    }
+    
+    tmp = data[sorted_end];
+    data[sorted_end] = data[min_pos];
+    data[min_pos] = tmp;
+    
+    sorted_end = sorted_end + 1;
+  }
+  
+  i = 0;
+  while (i < 7) {
+    print(data[i]);
+    i = i + 1;
+  }
+}
+
+main();
